@@ -39,13 +39,13 @@ class CRUD : AppCompatActivity() {
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
-        HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/update.php?id=$id&name=$name")
+        HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/hapus.php?id=$id&name=$name")
     }
     public fun btnUpdate(v : View)
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
-        HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/hapus.php?id=$id&name=$name")
+        HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/update.php?id=$id&name=$name")
     }
 
     fun POST(url: String, id: String, name : String): String {
@@ -64,7 +64,7 @@ class CRUD : AppCompatActivity() {
             // 3. build jsonObject
             val jsonObject = JSONObject()
             jsonObject.accumulate("username", id)
-            jsonObject.accumulate("password", name)
+            jsonObject.accumulate("name", name)
             //jsonObject.accumulate("latitude", loc.getLatitude())
             // jsonObject.accumulate("updatestatus", loc.getUpdate())
 
