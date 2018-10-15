@@ -23,6 +23,7 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 
@@ -180,7 +181,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
         override fun onPostExecute(result: String) {
             //Toast.makeText(applicationContext, "User : $userid, Lat : $lat, Long : $lng", Toast.LENGTH_SHORT).show()
-            Toast.makeText(getBaseContext(), ""+hasil, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), ""+hasil, Toast.LENGTH_LONG).show();
 
         }
     }
@@ -248,13 +249,25 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true)
+
             //mAuthTask = UserLoginTask(emailStr, passwordStr)
             //mAuthTask!!.execute(null as Void?)
             //var hasil : String
 
             HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/login.php?username=$usr&password=$pswd")
-            Toast.makeText(getApplicationContext(),""+hasil,Toast.LENGTH_SHORT).show()
+           // Toast.makeText(getApplicationContext(),""+hasil,Toast.LENGTH_SHORT).show()
+            if (hasil.equals("login success"))
+            {
+                Toast.makeText(getApplicationContext(),"Login Sukses",Toast.LENGTH_SHORT).show()
+                showProgress(true)
+                val intent = Intent(applicationContext, MainHome::class.java)
+                startActivity(intent)
+            }
+            else
+            {
+                showProgress(false)
+                Toast.makeText(getApplicationContext(),"Login Gagal",Toast.LENGTH_SHORT).show()
+            }
 
         }
     }
