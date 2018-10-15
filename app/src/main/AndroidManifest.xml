@@ -35,6 +35,8 @@
         </activity>
         <activity android:name=".MainHome">
         </activity>
+        <activity android:name=".CRUD">
+        </activity>
     </application>
 
 </manifest>
