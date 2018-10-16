@@ -53,5 +53,5 @@
             android:layout_width="344dp"
             android:layout_height="wrap_content" android:layout_alignEnd="@+id/button"
             android:layout_alignParentBottom="true" android:id="@+id/button4" android:layout_marginBottom="122dp"
-            android:layout_marginEnd="-256dp"/>
+            android:layout_marginEnd="-256dp" android:onClick="btnView"/>
 </RelativeLayout>
