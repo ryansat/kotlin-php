@@ -254,7 +254,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             //mAuthTask!!.execute(null as Void?)
             //var hasil : String
 
-            HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/login.php?username=$usr&password=$pswd")
+            HttpAsyncTaskPost().execute("http://10.0.2.2/maps/login.php?username=$usr&password=$pswd")
             Thread.sleep(1000)
            // Toast.makeText(getApplicationContext(),""+hasil,Toast.LENGTH_SHORT).show()
             if (hasil.equals("login success"))
