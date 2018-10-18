@@ -13,4 +13,10 @@
             android:layout_height="wrap_content" android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true" android:id="@+id/button5" android:layout_marginTop="104dp"
             android:onClick="testCRUD"/>
+    <Button
+            android:text="VIEW DATA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/button5" android:id="@+id/button4" android:layout_marginTop="174dp"
+            android:onClick="viewData"/>
 </RelativeLayout>

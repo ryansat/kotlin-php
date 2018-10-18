@@ -17,5 +17,10 @@ class MainHome : AppCompatActivity() {
         val intent = Intent(applicationContext, CRUD::class.java)
         startActivity(intent)
     }
+    fun viewData (v : View)
+    {
+        val intent = Intent(applicationContext, ListData::class.java)
+        startActivity(intent)
+    }
 }
 

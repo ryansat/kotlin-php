@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.View
-import android.widget.EditText
+import android.widget.ListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_crud.*
 import org.apache.http.client.methods.HttpGet
@@ -17,21 +17,47 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.util.concurrent.TimeUnit
+import android.widget.ArrayAdapter
+import android.widget.EditText
+
 
 class CRUD : AppCompatActivity() {
 
      var id : String = ""
      var name : String = ""
-     var hasil : String = ""
-     var jsondata : String = ""
-     var data : String = ""
+    var hasil : String = ""
+    var jsondata : String = ""
+    var data : String = ""
      var jObject = JSONObject()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud)
         id =  editText.text.toString()
         name = editText2.text.toString()//textView2.toString() //findViewById<EditText>( R.id.editText2).toString()
+
+        try {
+            editText.setText(intent.getStringExtra("ID"))
+            editText2.setText(intent.getStringExtra("Name"))
+            Toast.makeText(getApplicationContext(),""+intent.getStringExtra("Name"),Toast.LENGTH_SHORT).show()
+        }
+        catch (ex : Exception){
+            Toast.makeText(getApplicationContext(),""+ex,Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    public fun refreshdata(){
+
+        try {
+            HttpAsyncTaskPosts().execute("http://10.0.2.2:8070/maps/tampil.php")
+
+        }
+        catch (ex :Exception ){
+            Toast.makeText(getApplicationContext(),"Failed Parsing Data",Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -40,6 +66,7 @@ class CRUD : AppCompatActivity() {
         id =  editText.text.toString()
         name = editText2.text.toString()
         HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/tambah.php?id=$id&name=$name")
+        refreshdata()
     }
     public fun btnHapus (v : View)
     {
@@ -58,6 +85,7 @@ class CRUD : AppCompatActivity() {
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
+        refreshdata()
 
         try{
         data = ""
@@ -70,6 +98,7 @@ class CRUD : AppCompatActivity() {
         catch (ex :Exception){
             Toast.makeText(getBaseContext(), "failed get data", Toast.LENGTH_LONG).show()
         }
+
 3    }
 
     fun showMessage(title: String, Message: String) {
@@ -197,6 +226,7 @@ class CRUD : AppCompatActivity() {
                 result = "Did not work!"
             }
 
+
             jsondata += result
 
         } catch (e: Exception) {
@@ -233,12 +263,29 @@ class CRUD : AppCompatActivity() {
         jObject = JSONObject(jsondata)
         val menuitemArray = jObject.getJSONArray("user")
         //var sret = ""
-        for (i in 0 until menuitemArray.length()) {
+        /*for (i in 0 until menuitemArray.length()) {
 
             data += menuitemArray.getJSONObject(i).getString("id").toString() + " : "
             data += menuitemArray.getJSONObject(i).getString("name").toString() + "\n"
 
-        }
+            var lv: ListView = findViewById<View>(R.id.mainListView) as ListView
+
+            // Instanciating an array list (you don't need to do this,
+            // you already have yours).
+            val your_array_list = ArrayList<String>()
+            your_array_list.add(data)
+            //your_array_list.add(name)
+
+            // This is the array adapter, it takes the context of the activity as a
+            // first parameter, the type of list view as a second parameter and your
+            // array as a third parameter.
+            val arrayAdapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                your_array_list
+            )
+            lv.setAdapter(arrayAdapter)
+        }*/
         //txtResult.setText(sret);
     }
 
