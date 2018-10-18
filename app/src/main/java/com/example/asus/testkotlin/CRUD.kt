@@ -65,20 +65,24 @@ class CRUD : AppCompatActivity() {
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
+<<<<<<< HEAD
         HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/tambah.php?id=$id&name=$name")
         refreshdata()
+=======
+        HttpAsyncTaskPost().execute("http://10.0.2.2/maps/tambah.php?id=$id&name=$name")
+>>>>>>> 1ba0d79c54ceecc539de1245c3b05fa0091bfbcd
     }
     public fun btnHapus (v : View)
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
-        HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/hapus.php?id=$id&name=$name")
+        HttpAsyncTaskPost().execute("http://10.0.2.2/maps/hapus.php?id=$id&name=$name")
     }
     public fun btnUpdate(v : View)
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
-        HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/update.php?id=$id&name=$name")
+        HttpAsyncTaskPost().execute("http://10.0.2.2/maps/update.php?id=$id&name=$name")
     }
 
     public fun btnView(v : View)
@@ -90,7 +94,7 @@ class CRUD : AppCompatActivity() {
         try{
         data = ""
         jsondata = ""
-        HttpAsyncTaskPosts().execute("http://10.0.2.2:8070/maps/tampil.php")
+        HttpAsyncTaskPosts().execute("http://10.0.2.2/maps/tampil.php")
         Thread.sleep(1000)
         // Show all data
         parseBoundary()
@@ -259,7 +263,7 @@ class CRUD : AppCompatActivity() {
 
     private fun parseBoundary() {
         var xResultBoundary : String =""
-        //xResultBoundary = getRequestBoundary("http://10.0.2.2:8070/maps/tampil.php")
+        //xResultBoundary = getRequestBoundary("http://10.0.2.2/maps/tampil.php")
         jObject = JSONObject(jsondata)
         val menuitemArray = jObject.getJSONArray("user")
         //var sret = ""
