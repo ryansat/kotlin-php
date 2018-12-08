@@ -65,12 +65,10 @@ class CRUD : AppCompatActivity() {
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
-<<<<<<< HEAD
         HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/tambah.php?id=$id&name=$name")
         refreshdata()
-=======
         HttpAsyncTaskPost().execute("http://10.0.2.2/maps/tambah.php?id=$id&name=$name")
->>>>>>> 1ba0d79c54ceecc539de1245c3b05fa0091bfbcd
+
     }
     public fun btnHapus (v : View)
     {
