@@ -52,7 +52,7 @@ class CRUD : AppCompatActivity() {
     public fun refreshdata(){
 
         try {
-            HttpAsyncTaskPosts().execute("http://10.0.2.2:8070/maps/tampil.php")
+            HttpAsyncTaskPosts().execute("http://10.0.2.2/maps/tampil.php")
 
         }
         catch (ex :Exception ){
@@ -65,7 +65,7 @@ class CRUD : AppCompatActivity() {
     {
         id =  editText.text.toString()
         name = editText2.text.toString()
-        HttpAsyncTaskPost().execute("http://10.0.2.2:8070/maps/tambah.php?id=$id&name=$name")
+        HttpAsyncTaskPost().execute("http://10.0.2.2/maps/tambah.php?id=$id&name=$name")
         refreshdata()
         HttpAsyncTaskPost().execute("http://10.0.2.2/maps/tambah.php?id=$id&name=$name")
 

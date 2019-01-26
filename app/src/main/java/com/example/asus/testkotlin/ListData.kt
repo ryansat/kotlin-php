@@ -52,7 +52,7 @@ class ListData : AppCompatActivity() {
         try{
             data = ""
             jsondata = ""
-            HttpAsyncTaskPosts().execute("http://10.0.2.2:8070/maps/tampil.php")
+            HttpAsyncTaskPosts().execute("http://10.0.2.2/maps/tampil.php")
             Thread.sleep(1000)
             // Show all data
             //parseBoundary()
